@@ -5,7 +5,7 @@ let lastCitySearched = ""
 // api call to openweathermap.org
 let getCityWeather = function(city) {
     // format the OpenWeather api url
-    let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=ce39e7239416ad754359ca762d28521a";
+    let apiUrl = "https://api.openweathermap.org/data/2.5/weather?" + city + "&appid=9eef5b9e64b182fa6dcb3e3a2bc41c0e&units=imperial";
 
     // make a request to the url
     fetch(apiUrl)
@@ -59,7 +59,7 @@ let displayWeather = function(weatherData) {
     $("#main-city-wind").text("Wind Speed: " + weatherData.wind.speed.toFixed(1) + " mph");
 
     // use lat & lon to make the uv api call
-    fetch("https://api.openweathermap.org/data/2.5/uvi?lat=" + weatherData.coord.lat + "&lon="+ weatherData.coord.lon + "&appid=ce39e7239416ad754359ca762d28521a")
+    fetch("https://api.openweathermap.org/data/2.5/uvi?lat=" + weatherData.coord.lat + "&lon="+ weatherData.coord.lon + "&appid=9eef5b9e64b182fa6dcb3e3a2bc41c0e")
         .then(function(response) {
             response.json().then(function(data) {
 
@@ -82,7 +82,7 @@ let displayWeather = function(weatherData) {
         });
 
     // five-day api call
-    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + weatherData.name + "&appid=ce39e7239416ad754359ca762d28521a&units=imperial")
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + weatherData.name + "&appid=9eef5b9e64b182fa6dcb3e3a2bc41c0e&units=imperial")
         .then(function(response) {
             response.json().then(function(data) {
 
